@@ -3,7 +3,7 @@ Start-Sleep -Seconds 5
 
 #Start OSDCloud ZTI the RIGHT way
 Write-Host  -ForegroundColor Green "Start OSDCloud"
-Start-OSDCloud -OSVersion 'Windows 11' -OSBuild 23H2 -OSEdition Pro -OSLanguage en-us -OSLicense Volume -ZTI
+Start-OSDCloud -OSVersion 'Windows 11' -OSBuild 23H2 -OSEdition Pro -OSLanguage en-us -OSLicense Volume
 
 #Restart from WinPE
 Write-Host  -ForegroundColor Green "Restarting in 20 seconds!"
