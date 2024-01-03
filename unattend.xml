@@ -85,6 +85,11 @@
 					<Order>15</Order>
 					<Path>reg.exe add "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server" /v fDenyTSConnections /t REG_DWORD /d 0 /f</Path>
 				</RunSynchronousCommand>
+				<RunSynchronousCommand wcm:action="add">
+				<Description>disable consumer features</Description>
+					<Order>16</Order>
+					<Path>reg.exe add "HKLM\Software\Policies\Microsoft\Windows\CloudContent" /v DisableWindowsConsumerFeatures /t REG_DWORD /d 1 /f</Path>
+				</RunSynchronousCommand>
 			</RunSynchronous>
 		</component>
 		<component name="Microsoft-Windows-Shell-Setup" processorArchitecture="amd64" publicKeyToken="31bf3856ad364e35" language="neutral" versionScope="nonSxS">
@@ -133,10 +138,12 @@
 					<CommandLine>reg.exe add "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon" /v AutoLogonCount /t REG_DWORD /d 0 /f</CommandLine>
 				</SynchronousCommand>
 				<SynchronousCommand wcm:action="add">
+				<Description>Enable System Restore</Description>
 					<Order>2</Order>
 					<CommandLine>powershell.exe -NoProfile -Command "Enable-ComputerRestore -Drive 'C:';"</CommandLine>
 				</SynchronousCommand>
 				<SynchronousCommand wcm:action="add">
+				<Description>disable firewall</Description>
 					<Order>3</Order>
 					<CommandLine>powershell.exe -NoProfile -Command "Set-NetFirewallProfile -Profile Domain,Public,Private -Enabled False"</CommandLine>
 				</SynchronousCommand>
