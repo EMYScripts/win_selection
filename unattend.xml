@@ -136,6 +136,10 @@
 					<Order>2</Order>
 					<CommandLine>powershell.exe -NoProfile -Command "Enable-ComputerRestore -Drive 'C:';"</CommandLine>
 				</SynchronousCommand>
+				<SynchronousCommand wcm:action="add">
+					<Order>3</Order>
+					<CommandLine>powershell.exe -NoProfile -Command "Set-NetFirewallProfile -Profile Domain,Public,Private -Enabled False"</CommandLine>
+				</SynchronousCommand>
 			</FirstLogonCommands>
 		</component>
 	</settings>
