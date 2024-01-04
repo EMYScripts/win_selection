@@ -483,11 +483,6 @@
 					<Order>7</Order>
 					<CommandLine>reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\WindowsStore" /v "RemoveWindowsStore" /t REG_DWORD /d 1 /f</CommandLine>
 				</RunSynchronousCommand>
-				<SynchronousCommand wcm:action="add">
-				<Description>Uninstall Web Experience</Description>
-					<Order>8</Order>
-					<CommandLine>powershell.exe -NoProfile -Command "ECHO Yes | Winget uninstall "Windows Web Experience pack""</CommandLine>
-				</SynchronousCommand>
 			</FirstLogonCommands>
 		</component>
 	</settings>
