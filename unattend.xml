@@ -468,6 +468,19 @@
 					<Order>4</Order>
 					<CommandLine>powershell.exe -NoProfile -Command "Get-AppxPackage *windowscommunicationsapps* | Remove-AppxPackage"</CommandLine>
 				</SynchronousCommand>
+				<SynchronousCommand wcm:action="add">
+				<Description>remove mail widget</Description>
+					<Order>5</Order>
+					<CommandLine>powershell.exe -NoProfile -Command "Get-AppxPackage -AllUsers | Where-Object {$_.Name -like "*WebExperience*"} | Remove-AppxPackage -AllUsers -ErrorAction SilentlyContinue"</CommandLine>
+				</SynchronousCommand>
+				<SynchronousCommand wcm:action="add">
+				<Description>remove mail widget</Description>
+					<Order>6</Order>
+					<CommandLine>powershell.exe -NoProfile -Command "$AppxRemoval = Get-AppxProvisionedPackage -Online | Where-Object {$_.PackageName -like "*WebExperience*"} 
+ForEach ( $App in $AppxRemoval) {
+    Remove-AppxProvisionedPackage -Online -PackageName $App.PackageName 
+}"</CommandLine>
+				</SynchronousCommand>
 			</FirstLogonCommands>
 		</component>
 	</settings>
