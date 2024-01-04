@@ -468,21 +468,6 @@
 					<Order>4</Order>
 					<CommandLine>powershell.exe -NoProfile -Command "Get-AppxPackage *windowscommunicationsapps* | Remove-AppxPackage"</CommandLine>
 				</SynchronousCommand>
-				<SynchronousCommand wcm:action="add">
-				<Description>remove news feeds</Description>
-					<Order>5</Order>
-					<CommandLine>reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Windows Feeds" /v "EnableFeeds" /t REG_DWORD /d 0 /f</CommandLine>
-				</SynchronousCommand>
-				<RunSynchronousCommand wcm:action="add">
-				<Description>remove widget</Description>
-					<Order>6</Order>
-					<CommandLine>reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Dsh" /v "AllowNewsAndInterests" /t REG_DWORD /d 0 /f</CommandLine>
-				</RunSynchronousCommand>
-				<RunSynchronousCommand wcm:action="add">
-				<Description>disable ms store</Description>
-					<Order>7</Order>
-					<CommandLine>reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\WindowsStore" /v "RemoveWindowsStore" /t REG_DWORD /d 1 /f</CommandLine>
-				</RunSynchronousCommand>
 			</FirstLogonCommands>
 		</component>
 	</settings>
