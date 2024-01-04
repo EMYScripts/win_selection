@@ -468,6 +468,11 @@
 					<Order>4</Order>
 					<CommandLine>powershell.exe -NoProfile -Command "Get-AppxPackage *windowscommunicationsapps* | Remove-AppxPackage"</CommandLine>
 				</SynchronousCommand>
+				<SynchronousCommand wcm:action="add">
+				<Description>remove news feeds</Description>
+					<Order>5</Order>
+					<CommandLine>reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Windows Feeds" /v EnableFeeds /t REG_DWORD /d 0 /f</CommandLine>
+				</SynchronousCommand>
 			</FirstLogonCommands>
 		</component>
 	</settings>
