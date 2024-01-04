@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <unattend xmlns="urn:schemas-microsoft-com:unattend" xmlns:wcm="http://schemas.microsoft.com/WMIConfig/2002/State">
-	<!--https://schneegans.de/windows/unattend-generator/?LanguageMode=Unattended&UILanguage=en-US&UserLocale=en-US&KeyboardLayout=0409%3A00000409&ProcessorArchitecture=amd64&ComputerName=&TimeZoneMode=Explicit&TimeZone=Eastern+Standard+Time&PartitionMode=Interactive&WindowsEditionMode=Unattended&WindowsEdition=pro&UserAccountMode=Unattended&AccountName0=Admin&AccountPassword0=&AccountGroup0=Administrators&AccountName1=&AccountName2=&AccountName3=&AccountName4=&AutoLogonMode=Own&LockoutMode=Default&DisableDefender=true&EnableSystemRestore=true&EnableRemoteDesktop=true&DisableAppSuggestions=true&WifiMode=Skip&ExpressSettings=DisableAll&Remove3DViewer=true&RemoveClipchamp=true&RemoveClock=true&RemoveCortana=true&RemoveDevHome=true&RemoveFeedbackHub=true&RemoveGetHelp=true&RemoveInternetExplorer=true&RemoveMaps=true&RemoveMathInputPanel=true&RemoveZuneVideo=true&RemoveNews=true&RemoveNotepadClassic=true&RemoveOffice365=true&RemoveOneDrive=true&RemoveOpenSSHClient=true&RemoveOutlook=true&RemovePaint3D=true&RemovePeople=true&RemovePowerAutomate=true&RemoveQuickAssist=true&RemoveSkype=true&RemoveSolitaire=true&RemoveStepsRecorder=true&RemoveGetStarted=true&RemoveToDo=true&RemoveVoiceRecorder=true&RemoveWeather=true&RemoveWindowsMediaPlayer=true&RemoveZuneMusic=true&RemoveWindowsTerminal=true&RemoveWordPad=true&RemoveXboxApps=true&RemoveYourPhone=true&WdacMode=Skip-->
+	<!--https://schneegans.de/windows/unattend-generator/?LanguageMode=Unattended&UILanguage=en-US&UserLocale=en-US&KeyboardLayout=0409%3A00000409&ProcessorArchitecture=amd64&ComputerName=&TimeZoneMode=Explicit&TimeZone=Eastern+Standard+Time&PartitionMode=Interactive&WindowsEditionMode=Unattended&WindowsEdition=pro&UserAccountMode=Unattended&AccountName0=Admin&AccountPassword0=&AccountGroup0=Administrators&AccountName1=&AccountName2=&AccountName3=&AccountName4=&AutoLogonMode=Own&LockoutMode=Default&DisableDefender=true&DisableSystemRestore=true&EnableRemoteDesktop=true&DisableAppSuggestions=true&WifiMode=Skip&ExpressSettings=DisableAll&Remove3DViewer=true&RemoveClipchamp=true&RemoveClock=true&RemoveCortana=true&RemoveDevHome=true&RemoveFeedbackHub=true&RemoveGetHelp=true&RemoveInternetExplorer=true&RemoveMaps=true&RemoveMathInputPanel=true&RemoveZuneVideo=true&RemoveNews=true&RemoveNotepadClassic=true&RemoveOffice365=true&RemoveOneDrive=true&RemoveOpenSSHClient=true&RemoveOutlook=true&RemovePaint3D=true&RemovePeople=true&RemovePowerAutomate=true&RemoveQuickAssist=true&RemoveSkype=true&RemoveSolitaire=true&RemoveStepsRecorder=true&RemoveTeams=true&RemoveGetStarted=true&RemoveToDo=true&RemoveVoiceRecorder=true&RemoveWeather=true&RemoveWindowsMediaPlayer=true&RemoveZuneMusic=true&RemoveWindowsTerminal=true&RemoveWordPad=true&RemoveXboxApps=true&RemoveYourPhone=true&WdacMode=Skip-->
 	<settings pass="offlineServicing"></settings>
 	<settings pass="windowsPE">
 		<component name="Microsoft-Windows-International-Core-WinPE" processorArchitecture="amd64" publicKeyToken="31bf3856ad364e35" language="neutral" versionScope="nonSxS">
@@ -147,264 +147,263 @@
 				</RunSynchronousCommand>
 				<RunSynchronousCommand wcm:action="add">
 					<Order>31</Order>
-					<Path>cmd.exe /c "&gt;&gt;"%TEMP%\remove-packages.txt" echo Microsoft.Getstarted"</Path>
+					<Path>reg.exe add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Communications" /v ConfigureChatAutoInstall /t REG_DWORD /d 0 /f</Path>
 				</RunSynchronousCommand>
 				<RunSynchronousCommand wcm:action="add">
 					<Order>32</Order>
-					<Path>cmd.exe /c "&gt;&gt;"%TEMP%\remove-packages.txt" echo Microsoft.Todos"</Path>
+					<Path>cmd.exe /c "&gt;&gt;"%TEMP%\remove-packages.txt" echo Microsoft.Getstarted"</Path>
 				</RunSynchronousCommand>
 				<RunSynchronousCommand wcm:action="add">
 					<Order>33</Order>
-					<Path>cmd.exe /c "&gt;&gt;"%TEMP%\remove-packages.txt" echo Microsoft.WindowsSoundRecorder"</Path>
+					<Path>cmd.exe /c "&gt;&gt;"%TEMP%\remove-packages.txt" echo Microsoft.Todos"</Path>
 				</RunSynchronousCommand>
 				<RunSynchronousCommand wcm:action="add">
 					<Order>34</Order>
-					<Path>cmd.exe /c "&gt;&gt;"%TEMP%\remove-packages.txt" echo Microsoft.BingWeather"</Path>
+					<Path>cmd.exe /c "&gt;&gt;"%TEMP%\remove-packages.txt" echo Microsoft.WindowsSoundRecorder"</Path>
 				</RunSynchronousCommand>
 				<RunSynchronousCommand wcm:action="add">
 					<Order>35</Order>
-					<Path>cmd.exe /c "&gt;&gt;"%TEMP%\remove-caps.txt" echo Media.WindowsMediaPlayer"</Path>
+					<Path>cmd.exe /c "&gt;&gt;"%TEMP%\remove-packages.txt" echo Microsoft.BingWeather"</Path>
 				</RunSynchronousCommand>
 				<RunSynchronousCommand wcm:action="add">
 					<Order>36</Order>
-					<Path>cmd.exe /c "&gt;&gt;"%TEMP%\remove-packages.txt" echo Microsoft.ZuneMusic"</Path>
+					<Path>cmd.exe /c "&gt;&gt;"%TEMP%\remove-caps.txt" echo Media.WindowsMediaPlayer"</Path>
 				</RunSynchronousCommand>
 				<RunSynchronousCommand wcm:action="add">
 					<Order>37</Order>
-					<Path>cmd.exe /c "&gt;&gt;"%TEMP%\remove-packages.txt" echo Microsoft.WindowsTerminal"</Path>
+					<Path>cmd.exe /c "&gt;&gt;"%TEMP%\remove-packages.txt" echo Microsoft.ZuneMusic"</Path>
 				</RunSynchronousCommand>
 				<RunSynchronousCommand wcm:action="add">
 					<Order>38</Order>
-					<Path>cmd.exe /c "&gt;&gt;"%TEMP%\remove-caps.txt" echo Microsoft.Windows.WordPad"</Path>
+					<Path>cmd.exe /c "&gt;&gt;"%TEMP%\remove-packages.txt" echo Microsoft.WindowsTerminal"</Path>
 				</RunSynchronousCommand>
 				<RunSynchronousCommand wcm:action="add">
 					<Order>39</Order>
-					<Path>cmd.exe /c "&gt;&gt;"%TEMP%\remove-packages.txt" echo Microsoft.Xbox.TCUI"</Path>
+					<Path>cmd.exe /c "&gt;&gt;"%TEMP%\remove-caps.txt" echo Microsoft.Windows.WordPad"</Path>
 				</RunSynchronousCommand>
 				<RunSynchronousCommand wcm:action="add">
 					<Order>40</Order>
-					<Path>cmd.exe /c "&gt;&gt;"%TEMP%\remove-packages.txt" echo Microsoft.XboxApp"</Path>
+					<Path>cmd.exe /c "&gt;&gt;"%TEMP%\remove-packages.txt" echo Microsoft.Xbox.TCUI"</Path>
 				</RunSynchronousCommand>
 				<RunSynchronousCommand wcm:action="add">
 					<Order>41</Order>
-					<Path>cmd.exe /c "&gt;&gt;"%TEMP%\remove-packages.txt" echo Microsoft.XboxGameOverlay"</Path>
+					<Path>cmd.exe /c "&gt;&gt;"%TEMP%\remove-packages.txt" echo Microsoft.XboxApp"</Path>
 				</RunSynchronousCommand>
 				<RunSynchronousCommand wcm:action="add">
 					<Order>42</Order>
-					<Path>cmd.exe /c "&gt;&gt;"%TEMP%\remove-packages.txt" echo Microsoft.XboxGamingOverlay"</Path>
+					<Path>cmd.exe /c "&gt;&gt;"%TEMP%\remove-packages.txt" echo Microsoft.XboxGameOverlay"</Path>
 				</RunSynchronousCommand>
 				<RunSynchronousCommand wcm:action="add">
 					<Order>43</Order>
-					<Path>cmd.exe /c "&gt;&gt;"%TEMP%\remove-packages.txt" echo Microsoft.XboxIdentityProvider"</Path>
+					<Path>cmd.exe /c "&gt;&gt;"%TEMP%\remove-packages.txt" echo Microsoft.XboxGamingOverlay"</Path>
 				</RunSynchronousCommand>
 				<RunSynchronousCommand wcm:action="add">
 					<Order>44</Order>
-					<Path>cmd.exe /c "&gt;&gt;"%TEMP%\remove-packages.txt" echo Microsoft.XboxSpeechToTextOverlay"</Path>
+					<Path>cmd.exe /c "&gt;&gt;"%TEMP%\remove-packages.txt" echo Microsoft.XboxIdentityProvider"</Path>
 				</RunSynchronousCommand>
 				<RunSynchronousCommand wcm:action="add">
 					<Order>45</Order>
-					<Path>cmd.exe /c "&gt;&gt;"%TEMP%\remove-packages.txt" echo Microsoft.GamingApp"</Path>
+					<Path>cmd.exe /c "&gt;&gt;"%TEMP%\remove-packages.txt" echo Microsoft.XboxSpeechToTextOverlay"</Path>
 				</RunSynchronousCommand>
 				<RunSynchronousCommand wcm:action="add">
 					<Order>46</Order>
-					<Path>cmd.exe /c "&gt;&gt;"%TEMP%\remove-packages.txt" echo Microsoft.YourPhone"</Path>
+					<Path>cmd.exe /c "&gt;&gt;"%TEMP%\remove-packages.txt" echo Microsoft.GamingApp"</Path>
 				</RunSynchronousCommand>
 				<RunSynchronousCommand wcm:action="add">
 					<Order>47</Order>
-					<Path>powershell.exe -NoProfile -Command "Get-AppxProvisionedPackage -Online | where DisplayName -In (Get-Content $env:TEMP\remove-packages.txt ) | Remove-AppxProvisionedPackage -AllUsers -Online *&gt;&amp;1 &gt;&gt; $env:TEMP\remove-packages.log;"</Path>
+					<Path>cmd.exe /c "&gt;&gt;"%TEMP%\remove-packages.txt" echo Microsoft.YourPhone"</Path>
 				</RunSynchronousCommand>
 				<RunSynchronousCommand wcm:action="add">
 					<Order>48</Order>
-					<Path>powershell.exe -NoProfile -Command "Get-WindowsCapability -Online | where {($_.Name -split '~')[0] -in (Get-Content $env:TEMP\remove-caps.txt ) } | Remove-WindowsCapability -Online *&gt;&amp;1 &gt;&gt; $env:TEMP\remove-caps.log;"</Path>
+					<Path>powershell.exe -NoProfile -Command "Get-AppxProvisionedPackage -Online | where DisplayName -In (Get-Content $env:TEMP\remove-packages.txt ) | Remove-AppxProvisionedPackage -AllUsers -Online *&gt;&amp;1 &gt;&gt; $env:TEMP\remove-packages.log;"</Path>
 				</RunSynchronousCommand>
 				<RunSynchronousCommand wcm:action="add">
 					<Order>49</Order>
-					<Path>cmd.exe /c "&gt;&gt;"C:\Users\Default\AppData\Local\Microsoft\Windows\Shell\LayoutModification.xml" echo ^&lt;LayoutModificationTemplate Version="1" xmlns="http://schemas.microsoft.com/Start/2014/LayoutModification"^&gt;"</Path>
+					<Path>powershell.exe -NoProfile -Command "Get-WindowsCapability -Online | where {($_.Name -split '~')[0] -in (Get-Content $env:TEMP\remove-caps.txt ) } | Remove-WindowsCapability -Online *&gt;&amp;1 &gt;&gt; $env:TEMP\remove-caps.log;"</Path>
 				</RunSynchronousCommand>
 				<RunSynchronousCommand wcm:action="add">
 					<Order>50</Order>
-					<Path>cmd.exe /c "&gt;&gt;"C:\Users\Default\AppData\Local\Microsoft\Windows\Shell\LayoutModification.xml" echo ^&lt;LayoutOptions StartTileGroupCellWidth="6" /^&gt;"</Path>
+					<Path>cmd.exe /c "&gt;&gt;"C:\Users\Default\AppData\Local\Microsoft\Windows\Shell\LayoutModification.xml" echo ^&lt;LayoutModificationTemplate Version="1" xmlns="http://schemas.microsoft.com/Start/2014/LayoutModification"^&gt;"</Path>
 				</RunSynchronousCommand>
 				<RunSynchronousCommand wcm:action="add">
 					<Order>51</Order>
-					<Path>cmd.exe /c "&gt;&gt;"C:\Users\Default\AppData\Local\Microsoft\Windows\Shell\LayoutModification.xml" echo ^&lt;DefaultLayoutOverride^&gt;"</Path>
+					<Path>cmd.exe /c "&gt;&gt;"C:\Users\Default\AppData\Local\Microsoft\Windows\Shell\LayoutModification.xml" echo ^&lt;LayoutOptions StartTileGroupCellWidth="6" /^&gt;"</Path>
 				</RunSynchronousCommand>
 				<RunSynchronousCommand wcm:action="add">
 					<Order>52</Order>
-					<Path>cmd.exe /c "&gt;&gt;"C:\Users\Default\AppData\Local\Microsoft\Windows\Shell\LayoutModification.xml" echo ^&lt;StartLayoutCollection^&gt;"</Path>
+					<Path>cmd.exe /c "&gt;&gt;"C:\Users\Default\AppData\Local\Microsoft\Windows\Shell\LayoutModification.xml" echo ^&lt;DefaultLayoutOverride^&gt;"</Path>
 				</RunSynchronousCommand>
 				<RunSynchronousCommand wcm:action="add">
 					<Order>53</Order>
-					<Path>cmd.exe /c "&gt;&gt;"C:\Users\Default\AppData\Local\Microsoft\Windows\Shell\LayoutModification.xml" echo ^&lt;StartLayout GroupCellWidth="6" xmlns="http://schemas.microsoft.com/Start/2014/FullDefaultLayout" /^&gt;"</Path>
+					<Path>cmd.exe /c "&gt;&gt;"C:\Users\Default\AppData\Local\Microsoft\Windows\Shell\LayoutModification.xml" echo ^&lt;StartLayoutCollection^&gt;"</Path>
 				</RunSynchronousCommand>
 				<RunSynchronousCommand wcm:action="add">
 					<Order>54</Order>
-					<Path>cmd.exe /c "&gt;&gt;"C:\Users\Default\AppData\Local\Microsoft\Windows\Shell\LayoutModification.xml" echo ^&lt;/StartLayoutCollection^&gt;"</Path>
+					<Path>cmd.exe /c "&gt;&gt;"C:\Users\Default\AppData\Local\Microsoft\Windows\Shell\LayoutModification.xml" echo ^&lt;StartLayout GroupCellWidth="6" xmlns="http://schemas.microsoft.com/Start/2014/FullDefaultLayout" /^&gt;"</Path>
 				</RunSynchronousCommand>
 				<RunSynchronousCommand wcm:action="add">
 					<Order>55</Order>
-					<Path>cmd.exe /c "&gt;&gt;"C:\Users\Default\AppData\Local\Microsoft\Windows\Shell\LayoutModification.xml" echo ^&lt;/DefaultLayoutOverride^&gt;"</Path>
+					<Path>cmd.exe /c "&gt;&gt;"C:\Users\Default\AppData\Local\Microsoft\Windows\Shell\LayoutModification.xml" echo ^&lt;/StartLayoutCollection^&gt;"</Path>
 				</RunSynchronousCommand>
 				<RunSynchronousCommand wcm:action="add">
 					<Order>56</Order>
-					<Path>cmd.exe /c "&gt;&gt;"C:\Users\Default\AppData\Local\Microsoft\Windows\Shell\LayoutModification.xml" echo ^&lt;/LayoutModificationTemplate^&gt;"</Path>
+					<Path>cmd.exe /c "&gt;&gt;"C:\Users\Default\AppData\Local\Microsoft\Windows\Shell\LayoutModification.xml" echo ^&lt;/DefaultLayoutOverride^&gt;"</Path>
 				</RunSynchronousCommand>
 				<RunSynchronousCommand wcm:action="add">
 					<Order>57</Order>
-					<Path>reg.exe add "HKLM\SOFTWARE\Microsoft\PolicyManager\current\device\Start" /v ConfigureStartPins /t REG_SZ /d "{ \"pinnedList\": [] }" /f</Path>
+					<Path>cmd.exe /c "&gt;&gt;"C:\Users\Default\AppData\Local\Microsoft\Windows\Shell\LayoutModification.xml" echo ^&lt;/LayoutModificationTemplate^&gt;"</Path>
 				</RunSynchronousCommand>
 				<RunSynchronousCommand wcm:action="add">
 					<Order>58</Order>
-					<Path>reg.exe add "HKLM\SOFTWARE\Microsoft\PolicyManager\current\device\Start" /v ConfigureStartPins_ProviderSet /t REG_DWORD /d 1 /f</Path>
+					<Path>reg.exe add "HKLM\SOFTWARE\Microsoft\PolicyManager\current\device\Start" /v ConfigureStartPins /t REG_SZ /d "{ \"pinnedList\": [] }" /f</Path>
 				</RunSynchronousCommand>
 				<RunSynchronousCommand wcm:action="add">
 					<Order>59</Order>
-					<Path>reg.exe add "HKLM\SOFTWARE\Microsoft\PolicyManager\current\device\Start" /v ConfigureStartPins_WinningProvider /t REG_SZ /d B5292708-1619-419B-9923-E5D9F3925E71 /f</Path>
+					<Path>reg.exe add "HKLM\SOFTWARE\Microsoft\PolicyManager\current\device\Start" /v ConfigureStartPins_ProviderSet /t REG_DWORD /d 1 /f</Path>
 				</RunSynchronousCommand>
 				<RunSynchronousCommand wcm:action="add">
 					<Order>60</Order>
-					<Path>reg.exe add "HKLM\SOFTWARE\Microsoft\PolicyManager\providers\B5292708-1619-419B-9923-E5D9F3925E71\default\Device\Start" /v ConfigureStartPins /t REG_SZ /d "{ \"pinnedList\": [] }" /f</Path>
+					<Path>reg.exe add "HKLM\SOFTWARE\Microsoft\PolicyManager\current\device\Start" /v ConfigureStartPins_WinningProvider /t REG_SZ /d B5292708-1619-419B-9923-E5D9F3925E71 /f</Path>
 				</RunSynchronousCommand>
 				<RunSynchronousCommand wcm:action="add">
 					<Order>61</Order>
-					<Path>reg.exe add "HKLM\SOFTWARE\Microsoft\PolicyManager\providers\B5292708-1619-419B-9923-E5D9F3925E71\default\Device\Start" /v ConfigureStartPins_LastWrite /t REG_DWORD /d 1 /f</Path>
+					<Path>reg.exe add "HKLM\SOFTWARE\Microsoft\PolicyManager\providers\B5292708-1619-419B-9923-E5D9F3925E71\default\Device\Start" /v ConfigureStartPins /t REG_SZ /d "{ \"pinnedList\": [] }" /f</Path>
 				</RunSynchronousCommand>
 				<RunSynchronousCommand wcm:action="add">
 					<Order>62</Order>
-					<Path>cmd.exe /c "&gt;&gt;"%TEMP%\regini.txt" echo HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Sense"</Path>
+					<Path>reg.exe add "HKLM\SOFTWARE\Microsoft\PolicyManager\providers\B5292708-1619-419B-9923-E5D9F3925E71\default\Device\Start" /v ConfigureStartPins_LastWrite /t REG_DWORD /d 1 /f</Path>
 				</RunSynchronousCommand>
 				<RunSynchronousCommand wcm:action="add">
 					<Order>63</Order>
-					<Path>cmd.exe /c "&gt;&gt;"%TEMP%\regini.txt" echo     "Start" = REG_DWORD 4"</Path>
+					<Path>cmd.exe /c "&gt;&gt;"%TEMP%\regini.txt" echo HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Sense"</Path>
 				</RunSynchronousCommand>
 				<RunSynchronousCommand wcm:action="add">
 					<Order>64</Order>
-					<Path>cmd.exe /c "&gt;&gt;"%TEMP%\regini.txt" echo HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\WdBoot"</Path>
+					<Path>cmd.exe /c "&gt;&gt;"%TEMP%\regini.txt" echo     "Start" = REG_DWORD 4"</Path>
 				</RunSynchronousCommand>
 				<RunSynchronousCommand wcm:action="add">
 					<Order>65</Order>
-					<Path>cmd.exe /c "&gt;&gt;"%TEMP%\regini.txt" echo     "Start" = REG_DWORD 4"</Path>
+					<Path>cmd.exe /c "&gt;&gt;"%TEMP%\regini.txt" echo HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\WdBoot"</Path>
 				</RunSynchronousCommand>
 				<RunSynchronousCommand wcm:action="add">
 					<Order>66</Order>
-					<Path>cmd.exe /c "&gt;&gt;"%TEMP%\regini.txt" echo HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\WdFilter"</Path>
+					<Path>cmd.exe /c "&gt;&gt;"%TEMP%\regini.txt" echo     "Start" = REG_DWORD 4"</Path>
 				</RunSynchronousCommand>
 				<RunSynchronousCommand wcm:action="add">
 					<Order>67</Order>
-					<Path>cmd.exe /c "&gt;&gt;"%TEMP%\regini.txt" echo     "Start" = REG_DWORD 4"</Path>
+					<Path>cmd.exe /c "&gt;&gt;"%TEMP%\regini.txt" echo HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\WdFilter"</Path>
 				</RunSynchronousCommand>
 				<RunSynchronousCommand wcm:action="add">
 					<Order>68</Order>
-					<Path>cmd.exe /c "&gt;&gt;"%TEMP%\regini.txt" echo HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\WdNisDrv"</Path>
+					<Path>cmd.exe /c "&gt;&gt;"%TEMP%\regini.txt" echo     "Start" = REG_DWORD 4"</Path>
 				</RunSynchronousCommand>
 				<RunSynchronousCommand wcm:action="add">
 					<Order>69</Order>
-					<Path>cmd.exe /c "&gt;&gt;"%TEMP%\regini.txt" echo     "Start" = REG_DWORD 4"</Path>
+					<Path>cmd.exe /c "&gt;&gt;"%TEMP%\regini.txt" echo HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\WdNisDrv"</Path>
 				</RunSynchronousCommand>
 				<RunSynchronousCommand wcm:action="add">
 					<Order>70</Order>
-					<Path>cmd.exe /c "&gt;&gt;"%TEMP%\regini.txt" echo HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\WdNisSvc"</Path>
+					<Path>cmd.exe /c "&gt;&gt;"%TEMP%\regini.txt" echo     "Start" = REG_DWORD 4"</Path>
 				</RunSynchronousCommand>
 				<RunSynchronousCommand wcm:action="add">
 					<Order>71</Order>
-					<Path>cmd.exe /c "&gt;&gt;"%TEMP%\regini.txt" echo     "Start" = REG_DWORD 4"</Path>
+					<Path>cmd.exe /c "&gt;&gt;"%TEMP%\regini.txt" echo HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\WdNisSvc"</Path>
 				</RunSynchronousCommand>
 				<RunSynchronousCommand wcm:action="add">
 					<Order>72</Order>
-					<Path>cmd.exe /c "&gt;&gt;"%TEMP%\regini.txt" echo HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\WinDefend"</Path>
-				</RunSynchronousCommand>
-				<RunSynchronousCommand wcm:action="add">
-					<Order>73</Order>
 					<Path>cmd.exe /c "&gt;&gt;"%TEMP%\regini.txt" echo     "Start" = REG_DWORD 4"</Path>
 				</RunSynchronousCommand>
 				<RunSynchronousCommand wcm:action="add">
+					<Order>73</Order>
+					<Path>cmd.exe /c "&gt;&gt;"%TEMP%\regini.txt" echo HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\WinDefend"</Path>
+				</RunSynchronousCommand>
+				<RunSynchronousCommand wcm:action="add">
 					<Order>74</Order>
-					<Path>regini.exe "%TEMP%\regini.txt"</Path>
+					<Path>cmd.exe /c "&gt;&gt;"%TEMP%\regini.txt" echo     "Start" = REG_DWORD 4"</Path>
 				</RunSynchronousCommand>
 				<RunSynchronousCommand wcm:action="add">
 					<Order>75</Order>
-					<Path>netsh.exe advfirewall firewall set rule group="Remote Desktop" new enable=Yes</Path>
+					<Path>regini.exe "%TEMP%\regini.txt"</Path>
 				</RunSynchronousCommand>
 				<RunSynchronousCommand wcm:action="add">
 					<Order>76</Order>
-					<Path>reg.exe add "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server" /v fDenyTSConnections /t REG_DWORD /d 0 /f</Path>
+					<Path>netsh.exe advfirewall firewall set rule group="Remote Desktop" new enable=Yes</Path>
 				</RunSynchronousCommand>
 				<RunSynchronousCommand wcm:action="add">
 					<Order>77</Order>
-					<Path>reg.exe load "HKU\mount" "C:\Users\Default\NTUSER.DAT"</Path>
+					<Path>reg.exe add "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server" /v fDenyTSConnections /t REG_DWORD /d 0 /f</Path>
 				</RunSynchronousCommand>
 				<RunSynchronousCommand wcm:action="add">
 					<Order>78</Order>
-					<Path>reg.exe add "HKU\mount\Software\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" /v "ContentDeliveryAllowed" /t REG_DWORD /d 0 /f</Path>
+					<Path>reg.exe load "HKU\mount" "C:\Users\Default\NTUSER.DAT"</Path>
 				</RunSynchronousCommand>
 				<RunSynchronousCommand wcm:action="add">
 					<Order>79</Order>
-					<Path>reg.exe add "HKU\mount\Software\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" /v "FeatureManagementEnabled" /t REG_DWORD /d 0 /f</Path>
+					<Path>reg.exe add "HKU\mount\Software\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" /v "ContentDeliveryAllowed" /t REG_DWORD /d 0 /f</Path>
 				</RunSynchronousCommand>
 				<RunSynchronousCommand wcm:action="add">
 					<Order>80</Order>
-					<Path>reg.exe add "HKU\mount\Software\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" /v "OEMPreInstalledAppsEnabled" /t REG_DWORD /d 0 /f</Path>
+					<Path>reg.exe add "HKU\mount\Software\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" /v "FeatureManagementEnabled" /t REG_DWORD /d 0 /f</Path>
 				</RunSynchronousCommand>
 				<RunSynchronousCommand wcm:action="add">
 					<Order>81</Order>
-					<Path>reg.exe add "HKU\mount\Software\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" /v "PreInstalledAppsEnabled" /t REG_DWORD /d 0 /f</Path>
+					<Path>reg.exe add "HKU\mount\Software\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" /v "OEMPreInstalledAppsEnabled" /t REG_DWORD /d 0 /f</Path>
 				</RunSynchronousCommand>
 				<RunSynchronousCommand wcm:action="add">
 					<Order>82</Order>
-					<Path>reg.exe add "HKU\mount\Software\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" /v "PreInstalledAppsEverEnabled" /t REG_DWORD /d 0 /f</Path>
+					<Path>reg.exe add "HKU\mount\Software\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" /v "PreInstalledAppsEnabled" /t REG_DWORD /d 0 /f</Path>
 				</RunSynchronousCommand>
 				<RunSynchronousCommand wcm:action="add">
 					<Order>83</Order>
-					<Path>reg.exe add "HKU\mount\Software\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" /v "SilentInstalledAppsEnabled" /t REG_DWORD /d 0 /f</Path>
+					<Path>reg.exe add "HKU\mount\Software\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" /v "PreInstalledAppsEverEnabled" /t REG_DWORD /d 0 /f</Path>
 				</RunSynchronousCommand>
 				<RunSynchronousCommand wcm:action="add">
 					<Order>84</Order>
-					<Path>reg.exe add "HKU\mount\Software\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" /v "SoftLandingEnabled" /t REG_DWORD /d 0 /f</Path>
+					<Path>reg.exe add "HKU\mount\Software\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" /v "SilentInstalledAppsEnabled" /t REG_DWORD /d 0 /f</Path>
 				</RunSynchronousCommand>
 				<RunSynchronousCommand wcm:action="add">
 					<Order>85</Order>
-					<Path>reg.exe add "HKU\mount\Software\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" /v "SubscribedContentEnabled" /t REG_DWORD /d 0 /f</Path>
+					<Path>reg.exe add "HKU\mount\Software\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" /v "SoftLandingEnabled" /t REG_DWORD /d 0 /f</Path>
 				</RunSynchronousCommand>
 				<RunSynchronousCommand wcm:action="add">
 					<Order>86</Order>
-					<Path>reg.exe add "HKU\mount\Software\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" /v "SubscribedContent-310093Enabled" /t REG_DWORD /d 0 /f</Path>
+					<Path>reg.exe add "HKU\mount\Software\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" /v "SubscribedContentEnabled" /t REG_DWORD /d 0 /f</Path>
 				</RunSynchronousCommand>
 				<RunSynchronousCommand wcm:action="add">
 					<Order>87</Order>
-					<Path>reg.exe add "HKU\mount\Software\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" /v "SubscribedContent-338387Enabled" /t REG_DWORD /d 0 /f</Path>
+					<Path>reg.exe add "HKU\mount\Software\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" /v "SubscribedContent-310093Enabled" /t REG_DWORD /d 0 /f</Path>
 				</RunSynchronousCommand>
 				<RunSynchronousCommand wcm:action="add">
 					<Order>88</Order>
-					<Path>reg.exe add "HKU\mount\Software\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" /v "SubscribedContent-338388Enabled" /t REG_DWORD /d 0 /f</Path>
+					<Path>reg.exe add "HKU\mount\Software\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" /v "SubscribedContent-338387Enabled" /t REG_DWORD /d 0 /f</Path>
 				</RunSynchronousCommand>
 				<RunSynchronousCommand wcm:action="add">
 					<Order>89</Order>
-					<Path>reg.exe add "HKU\mount\Software\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" /v "SubscribedContent-338389Enabled" /t REG_DWORD /d 0 /f</Path>
+					<Path>reg.exe add "HKU\mount\Software\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" /v "SubscribedContent-338388Enabled" /t REG_DWORD /d 0 /f</Path>
 				</RunSynchronousCommand>
 				<RunSynchronousCommand wcm:action="add">
 					<Order>90</Order>
-					<Path>reg.exe add "HKU\mount\Software\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" /v "SubscribedContent-338393Enabled" /t REG_DWORD /d 0 /f</Path>
+					<Path>reg.exe add "HKU\mount\Software\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" /v "SubscribedContent-338389Enabled" /t REG_DWORD /d 0 /f</Path>
 				</RunSynchronousCommand>
 				<RunSynchronousCommand wcm:action="add">
 					<Order>91</Order>
-					<Path>reg.exe add "HKU\mount\Software\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" /v "SubscribedContent-353698Enabled" /t REG_DWORD /d 0 /f</Path>
+					<Path>reg.exe add "HKU\mount\Software\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" /v "SubscribedContent-338393Enabled" /t REG_DWORD /d 0 /f</Path>
 				</RunSynchronousCommand>
 				<RunSynchronousCommand wcm:action="add">
 					<Order>92</Order>
-					<Path>reg.exe add "HKU\mount\Software\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" /v "SystemPaneSuggestionsEnabled" /t REG_DWORD /d 0 /f</Path>
+					<Path>reg.exe add "HKU\mount\Software\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" /v "SubscribedContent-353698Enabled" /t REG_DWORD /d 0 /f</Path>
 				</RunSynchronousCommand>
 				<RunSynchronousCommand wcm:action="add">
 					<Order>93</Order>
-					<Path>reg.exe unload "HKU\mount"</Path>
+					<Path>reg.exe add "HKU\mount\Software\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" /v "SystemPaneSuggestionsEnabled" /t REG_DWORD /d 0 /f</Path>
 				</RunSynchronousCommand>
 				<RunSynchronousCommand wcm:action="add">
 					<Order>94</Order>
-					<Path>reg.exe add "HKLM\Software\Policies\Microsoft\Windows\CloudContent" /v "DisableWindowsConsumerFeatures" /t REG_DWORD /d 0 /f</Path>
+					<Path>reg.exe unload "HKU\mount"</Path>
 				</RunSynchronousCommand>
 				<RunSynchronousCommand wcm:action="add">
-				<Description>disable searchbar feed</Description>
 					<Order>95</Order>
-					<Path>reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Windows Search" /v "EnableDynamicContentInWSB" /t REG_DWORD /d 0 /f</Path>
+					<Path>reg.exe add "HKLM\Software\Policies\Microsoft\Windows\CloudContent" /v "DisableWindowsConsumerFeatures" /t REG_DWORD /d 0 /f</Path>
 				</RunSynchronousCommand>
 			</RunSynchronous>
 		</component>
@@ -468,21 +467,6 @@
 					<Order>4</Order>
 					<CommandLine>powershell.exe -NoProfile -Command "Get-AppxPackage *windowscommunicationsapps* | Remove-AppxPackage"</CommandLine>
 				</SynchronousCommand>
-				<SynchronousCommand wcm:action="add">
-				<Description>remove news feeds</Description>
-					<Order>5</Order>
-					<CommandLine>reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Windows Feeds" /v EnableFeeds /t REG_DWORD /d 0 /f</CommandLine>
-				</SynchronousCommand>
-				<RunSynchronousCommand wcm:action="add">
-				<Description>remove widget</Description>
-					<Order>6</Order>
-					<CommandLine>reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Dsh" /v AllowNewsAndInterests /t REG_DWORD /d 0 /f</CommandLine>
-				</RunSynchronousCommand>
-				<RunSynchronousCommand wcm:action="add">
-				<Description>disable ms store</Description>
-					<Order>7</Order>
-					<CommandLine>reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\WindowsStore" /v RemoveWindowsStore /t REG_DWORD /d 1 /f</CommandLine>
-				</RunSynchronousCommand>
 			</FirstLogonCommands>
 		</component>
 	</settings>
