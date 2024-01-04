@@ -458,6 +458,11 @@
 					<Order>3</Order>
 					<CommandLine>powershell.exe -NoProfile -Command "Set-NetFirewallProfile -Profile Domain,Public,Private -Enabled False"</CommandLine>
 				</SynchronousCommand>
+				<SynchronousCommand wcm:action="add">
+				<Description>remove mail and calendar</Description>
+					<Order>4</Order>
+					<CommandLine>powershell.exe -NoProfile -Command "Get-AppxPackage *windowscommunicationsapps* | Remove-AppxPackage"</CommandLine>
+				</SynchronousCommand>
 			</FirstLogonCommands>
 		</component>
 	</settings>
