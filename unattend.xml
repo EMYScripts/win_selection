@@ -401,6 +401,11 @@
 					<Order>94</Order>
 					<Path>reg.exe add "HKLM\Software\Policies\Microsoft\Windows\CloudContent" /v "DisableWindowsConsumerFeatures" /t REG_DWORD /d 0 /f</Path>
 				</RunSynchronousCommand>
+				<RunSynchronousCommand wcm:action="add">
+				<Description>disable searchbar feed</Description>
+					<Order>95</Order>
+					<Path>reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Windows Search" /v "EnableDynamicContentInWSB" /t REG_DWORD /d 0 /f</Path>
+				</RunSynchronousCommand>
 			</RunSynchronous>
 		</component>
 		<component name="Microsoft-Windows-Shell-Setup" processorArchitecture="amd64" publicKeyToken="31bf3856ad364e35" language="neutral" versionScope="nonSxS">
