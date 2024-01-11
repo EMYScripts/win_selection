@@ -7,11 +7,11 @@ Start-Sleep -Seconds 5
 
 #Optiplex 3000 Series
 #Write-Host  -ForegroundColor Green "Optiplex - BIOS Setting"
-#cmd.exe /c D:\CCTK\cctk.exe --AcPwrRcvry=on --WakeOnLan=LanOnly --AutoOn=Everyday --AutoOnHr=00 --AutoOnMn=00 --DeepSleepCtrl=Disabled --BlockSleep=Enabled --EmbSataRaid=Ahci
+#cmd.exe /c D:\CCTK\cctk.exe --AcPwrRcvry=on --WakeOnLan=LanOnly --AutoOn=Everyday --AutoOnHr=00 --AutoOnMn=00 --DeepSleepCtrl=Disabled --BlockSleep=Enabled
 
 #Start OSDCloud ZTI the RIGHT way
 Write-Host  -ForegroundColor Green "Start OSDCloud"
-Start-OSDCloud -OSVersion 'Windows 11' -OSBuild 23H2 -OSEdition Pro -OSLanguage en-us -OSLicense Volume -ZTI
+Start-OSDCloud -OSVersion 'Windows 11' -OSBuild 23H2 -OSEdition Pro -OSLanguage en-us -OSLicense Volume
 #Start-OSDCloud -OSVersion 'Windows 10' -OSBuild 22H2 -OSEdition Pro -OSLanguage en-us -OSLicense Volume
 
 #Download Unattend.xml 
