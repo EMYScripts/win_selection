@@ -1,7 +1,7 @@
 #Remove News Feeds & Widget
 reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Windows Feeds" /v EnableFeeds /t REG_DWORD /d 0 /f
 reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Dsh" /v AllowNewsAndInterests /t REG_DWORD /d 0 /f
-ECHO Yes | Winget uninstall "Windows Web Experience pack"
+ECHO 'Y' | Winget uninstall "Windows Web Experience pack"
 
 
 reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Windows Search" /v EnableDynamicContentInWSB /t REG_DWORD /d 0 /f
