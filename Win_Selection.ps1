@@ -23,6 +23,6 @@ Write-Host  -ForegroundColor Green "Downloading Reg&Clean_up_PS"
 Invoke-WebRequest -Uri "https://raw.githubusercontent.com/EMYScripts/win_selection/main/Additional_Settings.ps1" -OutFile "C:\Reg_Clean_up.ps1"
 
 #Restart from WinPE
-#Write-Host  -ForegroundColor Green "Restarting in 20 seconds!"
-#Start-Sleep -Seconds 20
-#wpeutil reboot
+Write-Host  -ForegroundColor Green "Restarting in 20 seconds!"
+Start-Sleep -Seconds 20
+wpeutil reboot
