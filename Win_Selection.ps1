@@ -19,8 +19,8 @@ Write-Host  -ForegroundColor Green "Downloading XML"
 Invoke-WebRequest -Uri "https://raw.githubusercontent.com/EMYScripts/win_selection/main/unattend.xml" -OutFile "C:\windows\panther\unattend.xml"
 
 #Download Reg&Clean_up_PS 
-Write-Host  -ForegroundColor Green "Downloading Reg&Clean_up_PS"
-Invoke-WebRequest -Uri "https://raw.githubusercontent.com/EMYScripts/win_selection/main/Additional_Settings.ps1" -OutFile "C:\Reg_Clean_up.ps1"
+#Write-Host  -ForegroundColor Green "Downloading Reg&Clean_up_PS"
+#Invoke-WebRequest -Uri "https://raw.githubusercontent.com/EMYScripts/win_selection/main/Additional_Settings.ps1" -OutFile "C:\Reg_Clean_up.ps1"
 
 #Restart from WinPE
 Write-Host  -ForegroundColor Green "Restarting in 20 seconds!"
