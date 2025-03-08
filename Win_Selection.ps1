@@ -15,8 +15,8 @@ Start-OSDCloud -OSVersion 'Windows 11' -OSBuild 24H2 -OSEdition Pro -OSLanguage 
 #Start-OSDCloud -OSVersion 'Windows 10' -OSBuild 22H2 -OSEdition Pro -OSLanguage en-us -OSLicense Volume
 
 #Download Unattend.xml 
-Write-Host  -ForegroundColor Green "Downloading XML"
-Invoke-WebRequest -Uri "https://raw.githubusercontent.com/EMYScripts/win_selection/main/unattend.xml" -OutFile "C:\windows\panther\unattend.xml"
+#Write-Host  -ForegroundColor Green "Downloading XML"
+#Invoke-WebRequest -Uri "https://raw.githubusercontent.com/EMYScripts/win_selection/main/unattend.xml" -OutFile "C:\windows\panther\unattend.xml"
 
 #Download Reg&Clean_up_PS 
 #Write-Host  -ForegroundColor Green "Downloading Reg&Clean_up_PS"
