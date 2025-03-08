@@ -7,13 +7,6 @@ if ((Get-MyComputerModel) -match 'Virtual') {
     Set-DisRes 1600
 }
 
-#Make sure I have the latest OSD Content
-Write-Host  -ForegroundColor Cyan "Updating the awesome OSD PowerShell Module"
-Install-Module OSD -Force
-
-Write-Host  -ForegroundColor Cyan "Importing the sweet OSD PowerShell Module"
-Import-Module OSD -Force
-
 
 #Variables to define the Windows OS / Edition etc to be applied during OSDCloud
 $Product = (Get-MyComputerProduct)
@@ -44,12 +37,10 @@ $Global:MyOSDCloud = [ordered]@{
 
 
 #Launch OSDCloud
-Write-SectionHeader -Message "Starting OSDCloud"
 write-host "Start-OSDCloud -OSName $OSName -OSEdition $OSEdition -OSActivation $OSActivation -OSLanguage $OSLanguage"
 
 Start-OSDCloud -OSName $OSName -OSEdition $OSEdition -OSActivation $OSActivation -OSLanguage $OSLanguage
 
-Write-SectionHeader -Message "OSDCloud Process Complete, Running Custom Actions From Script Before Reboot"
 
 #Latitude 3500 Series
 #Write-Host  -ForegroundColor Green "Latitude - BIOS Setting"
