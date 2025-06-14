@@ -22,6 +22,10 @@ Invoke-WebRequest -Uri "https://raw.githubusercontent.com/EMYScripts/win_selecti
 #Write-Host  -ForegroundColor Green "Downloading Reg&Clean_up_PS"
 #Invoke-WebRequest -Uri "https://raw.githubusercontent.com/EMYScripts/win_selection/main/Additional_Settings.ps1" -OutFile "C:\Reg_Clean_up.ps1"
 
+#Edit host file - add sdx.microsoft.com 
+#Write-Host  -ForegroundColor Green "add host record to block OOBE Updates"
+add-content c:\windows\system32\drivers\etc\hosts "127.0.0.1 sdx.microsoft.com ”
+
 #Restart from WinPE
 Write-Host  -ForegroundColor Green "Restarting in 20 seconds!"
 Start-Sleep -Seconds 20
