@@ -1,3 +1,16 @@
+﻿# Store the target password (replace with your secure storage method)
+$TargetPassword = ConvertTo-SecureString -AsPlainText -Force -String "123456789"
+
+# Prompt for the user's password
+$UserPassword = Read-Host -Prompt "Enter the password to proceed with installation" -AsSecureString
+
+# Compare the passwords
+$TargetPasswordPlain = [System.Runtime.InteropServices.Marshal]::PtrToStringAuto([System.Runtime.InteropServices.Marshal]::SecureStringToBSTR($TargetPassword))
+$UserPasswordPlain = [System.Runtime.InteropServices.Marshal]::PtrToStringAuto([System.Runtime.InteropServices.Marshal]::SecureStringToBSTR($UserPassword))
+
+if ($UserPasswordPlain -eq $TargetPasswordPlain) {
+    Write-Host "Password matched. Proceeding with installation..."
+    
 ﻿Write-Host  -ForegroundColor Green "Starting OSDCloud ZTI"
 Start-Sleep -Seconds 5
 
@@ -30,3 +43,7 @@ add-content c:\windows\system32\drivers\etc\hosts "127.0.0.1 sdx.microsoft.com �
 Write-Host  -ForegroundColor Green "Restarting in 20 seconds!"
 Start-Sleep -Seconds 20
 wpeutil reboot
+
+} else {
+    Write-Host "Passwords do not match. Installation aborted."
+}
