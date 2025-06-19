@@ -1,4 +1,7 @@
-﻿# Store the target password (replace with your secure storage method)
+﻿﻿Write-Host  -ForegroundColor Green "Starting OSDCloud ZTI"
+Start-Sleep -Seconds 5
+
+# Store the target password (replace with your secure storage method)
 $TargetPassword = ConvertTo-SecureString -AsPlainText -Force -String "123456789"
 
 # Prompt for the user's password
@@ -10,9 +13,6 @@ $UserPasswordPlain = [System.Runtime.InteropServices.Marshal]::PtrToStringAuto([
 
 if ($UserPasswordPlain -eq $TargetPasswordPlain) {
     Write-Host "Password matched. Proceeding with installation..."
-    
-﻿Write-Host  -ForegroundColor Green "Starting OSDCloud ZTI"
-Start-Sleep -Seconds 5
 
 #Latitude 3500 Series
 #Write-Host  -ForegroundColor Green "Latitude - BIOS Setting"
