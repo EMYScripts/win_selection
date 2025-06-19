@@ -1,4 +1,4 @@
-﻿﻿Write-Host  -ForegroundColor Green "Starting OSDCloud ZTI"
+﻿#﻿Write-Host  -ForegroundColor Green "Starting OSDCloud ZTI"
 Start-Sleep -Seconds 5
 
 # Store the target password (replace with your secure storage method)
