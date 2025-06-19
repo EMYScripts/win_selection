@@ -46,4 +46,5 @@ wpeutil reboot
 
 } else {
     Write-Host "Passwords do not match. Installation aborted."
+wpeutil shutdown
 }
