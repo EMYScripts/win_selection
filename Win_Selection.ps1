@@ -14,6 +14,9 @@ $UserPasswordPlain = [System.Runtime.InteropServices.Marshal]::PtrToStringAuto([
 if ($UserPasswordPlain -eq $TargetPasswordPlain) {
     Write-Host "Password matched. Proceeding with installation..."
 
+net use P: \\192.168.1.15\OSDCloud /user:test Emory2025!!!
+Start-Sleep -Seconds 5
+
 #Latitude 3500 Series
 #Write-Host  -ForegroundColor Green "Latitude - BIOS Setting"
 #cmd.exe /c D:\CCTK\cctk.exe --EmbSataRaid=Ahci
