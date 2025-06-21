@@ -1,6 +1,6 @@
 ﻿#﻿Write-Host  -ForegroundColor Green "Starting OSDCloud ZTI"
 Start-Sleep -Seconds 5
-
+$DefaultGateway = (Get-NetRoute -DestinationPrefix "0.0.0.0/0").NextHop
 $DefaultGateway = (ipconfig | Select-String "Default Gateway").line -split ":\s+" | Select-Object -Last 1
 $input = $DefaultGateway
 
