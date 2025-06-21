@@ -1,7 +1,7 @@
 ﻿#﻿Write-Host  -ForegroundColor Green "Starting OSDCloud ZTI"
 Start-Sleep -Seconds 5
 
-$DefaultGateway = (Get-NetRoute -DestinationPrefix "0.0.0.0/0").NextHop
+$DefaultGateway = (Get-NetIPConfiguration).IPv4DefaultGateway.NextHop
 $input = $DefaultGateway
 
 # Store the target password (replace with your secure storage method)
