@@ -22,7 +22,7 @@ switch ($input)
 {
     '192.168.1.1'  
     { 
-    net use P: \\192.168.1.15\OSDCloud /user:test Emory2025!!!
+    net use P: \\192.168.1.115\OSDCloud /user:test Emory2025!!!
     Start-Sleep -Seconds 5
 
     #Start OSDCloud ZTI the RIGHT way
