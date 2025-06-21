@@ -5,6 +5,7 @@ Start-Sleep -Seconds 5
 $TargetPassword = ConvertTo-SecureString -AsPlainText -Force -String "123456789"
 
 # Prompt for the user's password
+Write-Host "`n DISCLAIMER: USE AT YOUR OWN RISK - Going further will erase all data on your disk ! `n"-ForegroundColor Red
 $UserPassword = Read-Host -Prompt "Enter the password to proceed with installation" -AsSecureString
 
 # Compare the passwords
@@ -14,38 +15,173 @@ $UserPasswordPlain = [System.Runtime.InteropServices.Marshal]::PtrToStringAuto([
 if ($UserPasswordPlain -eq $TargetPasswordPlain) {
     Write-Host "Password matched. Proceeding with installation..."
 
-net use P: \\192.168.1.15\OSDCloud /user:test Emory2025!!!
-Start-Sleep -Seconds 5
+$DefaultGateway = (Get-NetRoute -DestinationPrefix "0.0.0.0/0").NextHop
+$input = $DefaultGateway
 
-#Latitude 3500 Series
-#Write-Host  -ForegroundColor Green "Latitude - BIOS Setting"
-#cmd.exe /c D:\CCTK\cctk.exe --EmbSataRaid=Ahci
+switch ($input)
+{
+    '192.168.1.1'  
+    { 
+    net use P: \\192.168.1.15\OSDCloud /user:test Emory2025!!!
+    Start-Sleep -Seconds 5
 
-#Optiplex 3000 Series
-#Write-Host  -ForegroundColor Green "Optiplex - BIOS Setting"
-#cmd.exe /c D:\CCTK\cctk.exe --AcPwrRcvry=on --WakeOnLan=LanOnly --AutoOn=Everyday --AutoOnHr=00 --AutoOnMn=00 --DeepSleepCtrl=Disabled --BlockSleep=Enabled
+    #Start OSDCloud ZTI the RIGHT way
+    Write-Host  -ForegroundColor Green "Start OSDCloud"
+    Start-OSDCloud -OSVersion 'Windows 11' -OSBuild 24H2 -OSEdition Pro -OSLanguage en-us -OSLicense Volume -ZTI
+    #Start-OSDCloud -OSVersion 'Windows 10' -OSBuild 22H2 -OSEdition Pro -OSLanguage en-us -OSLicense Volume
 
-#Start OSDCloud ZTI the RIGHT way
-Write-Host  -ForegroundColor Green "Start OSDCloud"
-Start-OSDCloud -OSVersion 'Windows 11' -OSBuild 24H2 -OSEdition Pro -OSLanguage en-us -OSLicense Volume -ZTI
-#Start-OSDCloud -OSVersion 'Windows 10' -OSBuild 22H2 -OSEdition Pro -OSLanguage en-us -OSLicense Volume
+    #Download Unattend.xml 
+    #Write-Host  -ForegroundColor Green "Downloading XML"
+    Invoke-WebRequest -Uri "https://raw.githubusercontent.com/EMYScripts/win_selection/main/unattend.xml" -OutFile "C:\windows\panther\unattend.xml"
 
-#Download Unattend.xml 
-#Write-Host  -ForegroundColor Green "Downloading XML"
-Invoke-WebRequest -Uri "https://raw.githubusercontent.com/EMYScripts/win_selection/main/unattend.xml" -OutFile "C:\windows\panther\unattend.xml"
+    #Edit host file - add sdx.microsoft.com 
+    #Write-Host  -ForegroundColor Green "add host record to block OOBE Updates"
+    add-content c:\windows\system32\drivers\etc\hosts "127.0.0.1 sdx.microsoft.com ”
 
-#Download Reg&Clean_up_PS 
-#Write-Host  -ForegroundColor Green "Downloading Reg&Clean_up_PS"
-#Invoke-WebRequest -Uri "https://raw.githubusercontent.com/EMYScripts/win_selection/main/Additional_Settings.ps1" -OutFile "C:\Reg_Clean_up.ps1"
+    #Restart from WinPE
+    Write-Host  -ForegroundColor Green "Restarting in 20 seconds!"
+    Start-Sleep -Seconds 20
+    wpeutil reboot 
+    }
+    '192.168.50.1'  
+        { 
+    net use P: \\192.168.1.15\OSDCloud /user:test Emory2025!!!
+    Start-Sleep -Seconds 5
 
-#Edit host file - add sdx.microsoft.com 
-#Write-Host  -ForegroundColor Green "add host record to block OOBE Updates"
-add-content c:\windows\system32\drivers\etc\hosts "127.0.0.1 sdx.microsoft.com ”
+    #Start OSDCloud ZTI the RIGHT way
+    Write-Host  -ForegroundColor Green "Start OSDCloud"
+    Start-OSDCloud -OSVersion 'Windows 11' -OSBuild 24H2 -OSEdition Pro -OSLanguage en-us -OSLicense Volume -ZTI
+    #Start-OSDCloud -OSVersion 'Windows 10' -OSBuild 22H2 -OSEdition Pro -OSLanguage en-us -OSLicense Volume
 
-#Restart from WinPE
-Write-Host  -ForegroundColor Green "Restarting in 20 seconds!"
-Start-Sleep -Seconds 20
-wpeutil reboot
+    #Download Unattend.xml 
+    #Write-Host  -ForegroundColor Green "Downloading XML"
+    Invoke-WebRequest -Uri "https://raw.githubusercontent.com/EMYScripts/win_selection/main/unattend.xml" -OutFile "C:\windows\panther\unattend.xml"
+
+    #Edit host file - add sdx.microsoft.com 
+    #Write-Host  -ForegroundColor Green "add host record to block OOBE Updates"
+    add-content c:\windows\system32\drivers\etc\hosts "127.0.0.1 sdx.microsoft.com ”
+
+    #Restart from WinPE
+    Write-Host  -ForegroundColor Green "Restarting in 20 seconds!"
+    Start-Sleep -Seconds 20
+    wpeutil reboot 
+    } 
+    '192.168.130.1' 
+        { 
+    net use P: \\192.168.1.15\OSDCloud /user:test Emory2025!!!
+    Start-Sleep -Seconds 5
+
+    #Start OSDCloud ZTI the RIGHT way
+    Write-Host  -ForegroundColor Green "Start OSDCloud"
+    Start-OSDCloud -OSVersion 'Windows 11' -OSBuild 24H2 -OSEdition Pro -OSLanguage en-us -OSLicense Volume -ZTI
+    #Start-OSDCloud -OSVersion 'Windows 10' -OSBuild 22H2 -OSEdition Pro -OSLanguage en-us -OSLicense Volume
+
+    #Download Unattend.xml 
+    #Write-Host  -ForegroundColor Green "Downloading XML"
+    Invoke-WebRequest -Uri "https://raw.githubusercontent.com/EMYScripts/win_selection/main/unattend.xml" -OutFile "C:\windows\panther\unattend.xml"
+
+    #Edit host file - add sdx.microsoft.com 
+    #Write-Host  -ForegroundColor Green "add host record to block OOBE Updates"
+    add-content c:\windows\system32\drivers\etc\hosts "127.0.0.1 sdx.microsoft.com ”
+
+    #Restart from WinPE
+    Write-Host  -ForegroundColor Green "Restarting in 20 seconds!"
+    Start-Sleep -Seconds 20
+    wpeutil reboot 
+    } 
+    '192.168.131.1' 
+        { 
+    net use P: \\192.168.1.15\OSDCloud /user:test Emory2025!!!
+    Start-Sleep -Seconds 5
+
+    #Start OSDCloud ZTI the RIGHT way
+    Write-Host  -ForegroundColor Green "Start OSDCloud"
+    Start-OSDCloud -OSVersion 'Windows 11' -OSBuild 24H2 -OSEdition Pro -OSLanguage en-us -OSLicense Volume -ZTI
+    #Start-OSDCloud -OSVersion 'Windows 10' -OSBuild 22H2 -OSEdition Pro -OSLanguage en-us -OSLicense Volume
+
+    #Download Unattend.xml 
+    #Write-Host  -ForegroundColor Green "Downloading XML"
+    Invoke-WebRequest -Uri "https://raw.githubusercontent.com/EMYScripts/win_selection/main/unattend.xml" -OutFile "C:\windows\panther\unattend.xml"
+
+    #Edit host file - add sdx.microsoft.com 
+    #Write-Host  -ForegroundColor Green "add host record to block OOBE Updates"
+    add-content c:\windows\system32\drivers\etc\hosts "127.0.0.1 sdx.microsoft.com ”
+
+    #Restart from WinPE
+    Write-Host  -ForegroundColor Green "Restarting in 20 seconds!"
+    Start-Sleep -Seconds 20
+    wpeutil reboot 
+    } 
+    '192.168.132.1' 
+        { 
+    net use P: \\192.168.1.15\OSDCloud /user:test Emory2025!!!
+    Start-Sleep -Seconds 5
+
+    #Start OSDCloud ZTI the RIGHT way
+    Write-Host  -ForegroundColor Green "Start OSDCloud"
+    Start-OSDCloud -OSVersion 'Windows 11' -OSBuild 24H2 -OSEdition Pro -OSLanguage en-us -OSLicense Volume -ZTI
+    #Start-OSDCloud -OSVersion 'Windows 10' -OSBuild 22H2 -OSEdition Pro -OSLanguage en-us -OSLicense Volume
+
+    #Download Unattend.xml 
+    #Write-Host  -ForegroundColor Green "Downloading XML"
+    Invoke-WebRequest -Uri "https://raw.githubusercontent.com/EMYScripts/win_selection/main/unattend.xml" -OutFile "C:\windows\panther\unattend.xml"
+
+    #Edit host file - add sdx.microsoft.com 
+    #Write-Host  -ForegroundColor Green "add host record to block OOBE Updates"
+    add-content c:\windows\system32\drivers\etc\hosts "127.0.0.1 sdx.microsoft.com ”
+
+    #Restart from WinPE
+    Write-Host  -ForegroundColor Green "Restarting in 20 seconds!"
+    Start-Sleep -Seconds 20
+    wpeutil reboot 
+    }
+    '192.168.133.1' 
+        { 
+    net use P: \\192.168.1.15\OSDCloud /user:test Emory2025!!!
+    Start-Sleep -Seconds 5
+
+    #Start OSDCloud ZTI the RIGHT way
+    Write-Host  -ForegroundColor Green "Start OSDCloud"
+    Start-OSDCloud -OSVersion 'Windows 11' -OSBuild 24H2 -OSEdition Pro -OSLanguage en-us -OSLicense Volume -ZTI
+    #Start-OSDCloud -OSVersion 'Windows 10' -OSBuild 22H2 -OSEdition Pro -OSLanguage en-us -OSLicense Volume
+
+    #Download Unattend.xml 
+    #Write-Host  -ForegroundColor Green "Downloading XML"
+    Invoke-WebRequest -Uri "https://raw.githubusercontent.com/EMYScripts/win_selection/main/unattend.xml" -OutFile "C:\windows\panther\unattend.xml"
+
+    #Edit host file - add sdx.microsoft.com 
+    #Write-Host  -ForegroundColor Green "add host record to block OOBE Updates"
+    add-content c:\windows\system32\drivers\etc\hosts "127.0.0.1 sdx.microsoft.com ”
+
+    #Restart from WinPE
+    Write-Host  -ForegroundColor Green "Restarting in 20 seconds!"
+    Start-Sleep -Seconds 20
+    wpeutil reboot 
+    }
+    '192.168.134.1' 
+        { 
+    net use P: \\192.168.1.15\OSDCloud /user:test Emory2025!!!
+    Start-Sleep -Seconds 5
+
+    #Start OSDCloud ZTI the RIGHT way
+    Write-Host  -ForegroundColor Green "Start OSDCloud"
+    Start-OSDCloud -OSVersion 'Windows 11' -OSBuild 24H2 -OSEdition Pro -OSLanguage en-us -OSLicense Volume -ZTI
+    #Start-OSDCloud -OSVersion 'Windows 10' -OSBuild 22H2 -OSEdition Pro -OSLanguage en-us -OSLicense Volume
+
+    #Download Unattend.xml 
+    #Write-Host  -ForegroundColor Green "Downloading XML"
+    Invoke-WebRequest -Uri "https://raw.githubusercontent.com/EMYScripts/win_selection/main/unattend.xml" -OutFile "C:\windows\panther\unattend.xml"
+
+    #Edit host file - add sdx.microsoft.com 
+    #Write-Host  -ForegroundColor Green "add host record to block OOBE Updates"
+    add-content c:\windows\system32\drivers\etc\hosts "127.0.0.1 sdx.microsoft.com ”
+
+    #Restart from WinPE
+    Write-Host  -ForegroundColor Green "Restarting in 20 seconds!"
+    Start-Sleep -Seconds 20
+    wpeutil reboot 
+    }
+}
 
 } else {
     Write-Host "Passwords do not match. Installation aborted."
