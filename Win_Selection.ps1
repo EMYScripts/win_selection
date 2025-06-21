@@ -1,6 +1,9 @@
 ﻿#﻿Write-Host  -ForegroundColor Green "Starting OSDCloud ZTI"
 Start-Sleep -Seconds 5
 
+$DefaultGateway = (Get-NetRoute -DestinationPrefix "0.0.0.0/0").NextHop
+$input = $DefaultGateway
+
 # Store the target password (replace with your secure storage method)
 $TargetPassword = ConvertTo-SecureString -AsPlainText -Force -String "123456789"
 
@@ -14,9 +17,6 @@ $UserPasswordPlain = [System.Runtime.InteropServices.Marshal]::PtrToStringAuto([
 
 if ($UserPasswordPlain -eq $TargetPasswordPlain) {
     Write-Host "Password matched. Proceeding with installation..."
-
-$DefaultGateway = (Get-NetRoute -DestinationPrefix "0.0.0.0/0").NextHop
-$input = $DefaultGateway
 
 switch ($input)
 {
@@ -180,6 +180,10 @@ switch ($input)
     Write-Host  -ForegroundColor Green "Restarting in 20 seconds!"
     Start-Sleep -Seconds 20
     wpeutil reboot 
+    }
+   'Default' 
+        { 
+    wpeutil shutdown 
     }
 }
 
