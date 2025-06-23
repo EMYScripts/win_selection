@@ -1,6 +1,6 @@
 ﻿#﻿Write-Host  -ForegroundColor Green "Starting OSDCloud ZTI"
 Start-Sleep -Seconds 5
-$DefaultGateway = (Get-NetRoute -DestinationPrefix "0.0.0.0/0").NextHop
+
 $DefaultGateway = (ipconfig | Select-String "Default Gateway").line -split ":\s+" | Select-Object -Last 1
 $input = $DefaultGateway
 
@@ -45,7 +45,7 @@ switch ($input)
     }
     '192.168.50.1'  
         { 
-    net use P: \\192.168.1.15\OSDCloud /user:test Emory2025!!!
+    net use P: \\172.18.20.10\OSDCloud /user:test Emory2025!!!
     Start-Sleep -Seconds 5
 
     #Start OSDCloud ZTI the RIGHT way
