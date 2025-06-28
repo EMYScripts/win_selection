@@ -46,6 +46,7 @@ switch ($input)
 
     Copy-Item -Path "U:\winvnc.exe" -Destination "C:\OSDCloud\Temp" -Force
     Copy-Item -Path "U:\ultravnc.ini" -Destination "C:\OSDCloud\Temp" -Force
+    Copy-Item -Path "U:\ultavnc_afte_win_load.ps1" -Destination "C:\OSDCloud\Temp" -Force
 
     #Restart from WinPE
     Write-Host  -ForegroundColor Green "Restarting in 20 seconds!"
