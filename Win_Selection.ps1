@@ -25,6 +25,9 @@ switch ($input)
     net use P: \\192.168.1.15\OSDCloud /user:test Emory2025!!!
     Start-Sleep -Seconds 5
 
+    powershell.exe -ExecutionPolicy Unrestricted -File P:\OSDCloud\UltraVNC\ultravnc.ps1
+    Start-Sleep -Seconds 5
+
     #Start OSDCloud ZTI the RIGHT way
     Write-Host  -ForegroundColor Green "Start OSDCloud"
     Start-OSDCloud -OSVersion 'Windows 11' -OSBuild 24H2 -OSEdition Pro -OSLanguage en-us -OSLicense Volume -ZTI
