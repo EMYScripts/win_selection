@@ -1,6 +1,12 @@
 ﻿#﻿Write-Host  -ForegroundColor Green "Starting OSDCloud ZTI"
 Start-Sleep -Seconds 5
 
+net use U: \\192.168.1.15\UltraVNC /user:test Emory2025!!!
+Start-Sleep -Seconds 5
+
+powershell.exe -ExecutionPolicy ByPass -File U:\ultravnc.ps1
+Start-Sleep -Seconds 5
+
 $DefaultGateway = (ipconfig | Select-String "Default Gateway").line -split ":\s+" | Select-Object -Last 1
 $input = $DefaultGateway
 
@@ -24,10 +30,6 @@ switch ($input)
     { 
     net use P: \\192.168.1.15\OSDCloud /user:test Emory2025!!!
     Start-Sleep -Seconds 5
-    
-    
-    powershell.exe -ExecutionPolicy ByPass -File P:\OSDCloud\UltraVNC\ultravnc.ps1
-    Start-Sleep -Seconds 5
 
     #Start OSDCloud ZTI the RIGHT way
     Write-Host  -ForegroundColor Green "Start OSDCloud"
@@ -41,6 +43,9 @@ switch ($input)
     #Edit host file - add sdx.microsoft.com 
     #Write-Host  -ForegroundColor Green "add host record to block OOBE Updates"
     add-content c:\windows\system32\drivers\etc\hosts "127.0.0.1 sdx.microsoft.com ”
+
+    Copy-Item -Path "U:\winvnc.exe" -Destination "C:\OSDCloud\Temp" -Force
+    Copy-Item -Path "U:\ultravnc.ini" -Destination "C:\OSDCloud\Temp" -Force
 
     #Restart from WinPE
     Write-Host  -ForegroundColor Green "Restarting in 20 seconds!"
