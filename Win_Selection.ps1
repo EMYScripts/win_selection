@@ -1,8 +1,8 @@
 ﻿#﻿Write-Host  -ForegroundColor Green "Starting OSDCloud ZTI"
 Start-Sleep -Seconds 5
 
-#net use U: \\172.18.20.10\UltraVNC$ /user:test Emory2025!!!
-#Start-Sleep -Seconds 5
+net use U: \\192.168.1.15\UltraVNC /user:test Emory2025!!!
+Start-Sleep -Seconds 5
 
 powershell.exe -ExecutionPolicy ByPass -File U:\ultravnc.ps1
 Start-Sleep -Seconds 5
