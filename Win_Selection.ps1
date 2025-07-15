@@ -1,115 +1,32 @@
-﻿#﻿Write-Host  -ForegroundColor Green "Starting OSDCloud ZTI"
+﻿Write-Host  -ForegroundColor Green "Starting OSDCloud ZTI"
 Start-Sleep -Seconds 5
 
-net use U: \\192.168.1.15\UltraVNC /user:test Emory2025!!!
-Start-Sleep -Seconds 5
+#Latitude 3500 Series
+#Write-Host  -ForegroundColor Green "Latitude - BIOS Setting"
+#cmd.exe /c D:\CCTK\cctk.exe --EmbSataRaid=Ahci
 
-powershell.exe -ExecutionPolicy ByPass -File U:\ultravnc.ps1
-Start-Sleep -Seconds 5
+#Optiplex 3000 Series
+#Write-Host  -ForegroundColor Green "Optiplex - BIOS Setting"
+#cmd.exe /c D:\CCTK\cctk.exe --AcPwrRcvry=on --WakeOnLan=LanOnly --AutoOn=Everyday --AutoOnHr=00 --AutoOnMn=00 --DeepSleepCtrl=Disabled --BlockSleep=Enabled
 
-$DefaultGateway = (ipconfig | Select-String "Default Gateway").line -split ":\s+" | Select-Object -Last 1
-$input = $DefaultGateway
+#Start OSDCloud ZTI the RIGHT way
+Write-Host  -ForegroundColor Green "Start OSDCloud"
+Start-OSDCloud -OSVersion 'Windows 11' -OSBuild 24H2 -OSEdition Pro -OSLanguage en-us -OSLicense Volume -ZTI
+#Start-OSDCloud -OSVersion 'Windows 10' -OSBuild 22H2 -OSEdition Pro -OSLanguage en-us -OSLicense Volume
 
-# Store the target password (replace with your secure storage method)
-$TargetPassword = ConvertTo-SecureString -AsPlainText -Force -String "123456789"
+#Download Unattend.xml 
+Write-Host  -ForegroundColor Green "Downloading XML"
+Invoke-WebRequest -Uri "https://raw.githubusercontent.com/EMYScripts/win_selection/main/unattend.xml" -OutFile "C:\windows\panther\unattend.xml"
 
-# Prompt for the user's password
-Write-Host "`n DISCLAIMER: USE AT YOUR OWN RISK - Going further will erase all data on your disk ! `n"-ForegroundColor Red
-$UserPassword = Read-Host -Prompt "Enter the password to proceed with installation" -AsSecureString
+#Download Reg&Clean_up_PS 
+#Write-Host  -ForegroundColor Green "Downloading Reg&Clean_up_PS"
+#Invoke-WebRequest -Uri "https://raw.githubusercontent.com/EMYScripts/win_selection/main/Additional_Settings.ps1" -OutFile "C:\Reg_Clean_up.ps1"
 
-# Compare the passwords
-$TargetPasswordPlain = [System.Runtime.InteropServices.Marshal]::PtrToStringAuto([System.Runtime.InteropServices.Marshal]::SecureStringToBSTR($TargetPassword))
-$UserPasswordPlain = [System.Runtime.InteropServices.Marshal]::PtrToStringAuto([System.Runtime.InteropServices.Marshal]::SecureStringToBSTR($UserPassword))
+#Edit host file - add sdx.microsoft.com 
+#Write-Host  -ForegroundColor Green "add host record to block OOBE Updates"
+add-content c:\windows\system32\drivers\etc\hosts "127.0.0.1 sdx.microsoft.com ”
 
-if ($UserPasswordPlain -eq $TargetPasswordPlain) {
-    Write-Host "Password matched. Proceeding with installation..."
-
-switch ($input)
-{
-    '192.168.1.1'  
-    { 
-    net use P: \\192.168.1.15\OSDCloud /user:test Emory2025!!!
-    Start-Sleep -Seconds 5
-
-    #Start OSDCloud ZTI the RIGHT way
-    Write-Host  -ForegroundColor Green "Start OSDCloud"
-    Start-OSDCloud -OSVersion 'Windows 11' -OSBuild 24H2 -OSEdition Pro -OSLanguage en-us -OSLicense Volume -ZTI
-    #Start-OSDCloud -OSVersion 'Windows 10' -OSBuild 22H2 -OSEdition Pro -OSLanguage en-us -OSLicense Volume
-
-    #Download Unattend.xml 
-    #Write-Host  -ForegroundColor Green "Downloading XML"
-    Invoke-WebRequest -Uri "https://raw.githubusercontent.com/EMYScripts/win_selection/main/unattend.xml" -OutFile "C:\windows\panther\unattend.xml"
-
-    #Edit host file - add sdx.microsoft.com 
-    #Write-Host  -ForegroundColor Green "add host record to block OOBE Updates"
-    add-content c:\windows\system32\drivers\etc\hosts "127.0.0.1 sdx.microsoft.com ”
-
-    Copy-Item -Path "U:\winvnc.exe" -Destination "C:\OSDCloud\Temp" -Force
-    Copy-Item -Path "U:\ultravnc.ini" -Destination "C:\OSDCloud\Temp" -Force
-    Copy-Item -Path "U:\ultavnc_after_win_load.ps1" -Destination "C:\OSDCloud\Temp" -Force
-
-    #Restart from WinPE
-    Write-Host  -ForegroundColor Green "Restarting in 20 seconds!"
-    Start-Sleep -Seconds 20
-    wpeutil reboot 
-    }
-    '192.168.50.1'  
-        { 
-    net use P: \\172.18.20.10\HSM$ /user:test Emory2025!!!
-    Start-Sleep -Seconds 5
-
-    #Start OSDCloud ZTI the RIGHT way
-    Write-Host  -ForegroundColor Green "Start OSDCloud"
-    Start-OSDCloud -OSVersion 'Windows 11' -OSBuild 24H2 -OSEdition Pro -OSLanguage en-us -OSLicense Volume -ZTI
-    #Start-OSDCloud -OSVersion 'Windows 10' -OSBuild 22H2 -OSEdition Pro -OSLanguage en-us -OSLicense Volume
-
-    #Download Unattend.xml 
-    #Write-Host  -ForegroundColor Green "Downloading XML"
-    Invoke-WebRequest -Uri "https://raw.githubusercontent.com/EMYScripts/win_selection/main/unattend.xml" -OutFile "C:\windows\panther\unattend.xml"
-
-    #Edit host file - add sdx.microsoft.com 
-    #Write-Host  -ForegroundColor Green "add host record to block OOBE Updates"
-    add-content c:\windows\system32\drivers\etc\hosts "127.0.0.1 sdx.microsoft.com ”
-
-    Copy-Item -Path "U:\winvnc.exe" -Destination "C:\OSDCloud\Temp" -Force
-    Copy-Item -Path "U:\ultravnc.ini" -Destination "C:\OSDCloud\Temp" -Force
-    Copy-Item -Path "U:\ultavnc_after_win_load.ps1" -Destination "C:\OSDCloud\Temp" -Force
-
-    #Restart from WinPE
-    Write-Host  -ForegroundColor Green "Restarting in 20 seconds!"
-    Start-Sleep -Seconds 20
-    wpeutil reboot 
-    } 
-    'Default' 
-        { 
-    net use P: \\172.18.20.10\HSMGA$ /user:test Emory2025!!!
-    Start-Sleep -Seconds 5
-
-    #Start OSDCloud ZTI the RIGHT way
-    Write-Host  -ForegroundColor Green "Start OSDCloud"
-    Start-OSDCloud -OSVersion 'Windows 11' -OSBuild 24H2 -OSEdition Pro -OSLanguage en-us -OSLicense Volume -ZTI
-    #Start-OSDCloud -OSVersion 'Windows 10' -OSBuild 22H2 -OSEdition Pro -OSLanguage en-us -OSLicense Volume
-
-    #Download Unattend.xml 
-    #Write-Host  -ForegroundColor Green "Downloading XML"
-    Invoke-WebRequest -Uri "https://raw.githubusercontent.com/EMYScripts/win_selection/main/unattend.xml" -OutFile "C:\windows\panther\unattend.xml"
-
-    #Edit host file - add sdx.microsoft.com 
-    #Write-Host  -ForegroundColor Green "add host record to block OOBE Updates"
-    add-content c:\windows\system32\drivers\etc\hosts "127.0.0.1 sdx.microsoft.com ”
-
-    Copy-Item -Path "U:\winvnc.exe" -Destination "C:\OSDCloud\Temp" -Force
-    Copy-Item -Path "U:\ultravnc.ini" -Destination "C:\OSDCloud\Temp" -Force
-    Copy-Item -Path "U:\ultavnc_after_win_load.ps1" -Destination "C:\OSDCloud\Temp" -Force
-
-    #Restart from WinPE
-    Write-Host  -ForegroundColor Green "Restarting in 20 seconds!"
-    Start-Sleep -Seconds 20
-    wpeutil reboot 
-    } 
-    }
-
-} else {
-    Write-Host "Passwords do not match. Installation aborted."
-wpeutil shutdown
-}
+#Restart from WinPE
+Write-Host  -ForegroundColor Green "Restarting in 20 seconds!"
+Start-Sleep -Seconds 20
+wpeutil reboot
